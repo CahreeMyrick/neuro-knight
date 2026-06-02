@@ -1,0 +1,8 @@
+outputs
+data
+apps
+notebooks
+build
+model_outputs
+scratch
+.vscode
