@@ -1,62 +1,41 @@
 #include <iostream>
+#include "../src/game/game.hpp"
+#include <iostream>
 #include "../src/position/bbposition.hpp"
 #include "../src/parsing/parse.hpp"
 #include "../src/render/render.hpp"
 #include "../src/core/movelist.hpp"
 #include "../src/movegen/bb_movegen.hpp"
 #include "../src/search/search_strategy.hpp"
+#include "../src/eval/eval_strategy.hpp"
+#include "../src/cli/args.hpp"
 
+void run_selfplay(const GameConfig& config) {
+    std::cout << "Running selfplay at depth "
+              << config.depth << "\n";
+}
 
-int main() {
+int main(int argc, char* argv[]) {
+    try {
+        CLIOptions opts = parse_args(argc, argv);
+        Game game(opts);
 
-  // initialize board
-  BitboardPosition bb = BitboardPosition::startpos();
-
-  // viz board
-  std::cout << Render::board_ascii(bb);
-
-  while (true) {
-    std::string move_candidate;
-    std::cout << "Enter Move: ";
-    std::getline(std::cin, move_candidate);
-
-    auto parsed = Parse::two_squares(move_candidate);
-
-    Move m;
-    m.from = parsed->first;
-    m.to = parsed->second;
-
-    MoveList legal_moves;
-    BitboardMoveGen::generate_legal(bb, legal_moves);
-    bool valid = false;
-
-    for (auto lm : legal_moves.moves) {
-      if (m.to == lm.to & m.from == lm.from) {
-        valid = true;
-      }
+        switch (opts.mode) {
+            case Mode::Play: {
+                game.run();
+                break;
+            }
+            
+            case Mode::Selfplay: {
+                // game.run_selfplay();
+                break;
+            }
+        }
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << "\n";
+        return 1;
     }
 
-    if (valid == false){
-      std::cout << "Choose a valid move. " << std::endl;
-      continue;
-    }
-
-    bb.make_move(m);
-    std::cout << Render::board_ascii(bb);
-
-    if (bb.side_to_move() == Color::Black) {
-      //MaterialEvaluator evaluator;
-      NeuralEvaluator evaluator;
-      Search search(evaluator);
-
-      auto res = search.minimax(bb, 3);
-      std::cout << "Engine Move: " << Parse::move_to_string(res.best) << std::endl; 
-
-      bb.make_move(res.best);
-      std::cout << Render::board_ascii(bb);
-    }
-
-  }
-
-  return 0;
+    return 0;
 }
