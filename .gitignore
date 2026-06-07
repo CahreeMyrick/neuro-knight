@@ -4,5 +4,8 @@ apps
 notebooks
 build
 model_outputs
+model_exports
 scratch
+openings
 .vscode
+*.DS_Store
