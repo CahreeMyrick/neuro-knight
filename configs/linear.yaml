@@ -1,0 +1,53 @@
+# configs/linear_models_769.yaml
+
+experiment:
+  name: linear_models_769
+
+outputs_dir: /Users/cahree/dev/systems/chess/engines/neuro-knight/model_outputs
+
+dataset:
+  paths:
+    - /Users/cahree/dev/systems/chess/engines/engine_5/data/data_stockfish_labeled.csv
+    - /Users/cahree/dev/systems/chess/engines/engine_5/data/data_stockfish_labeled_400k.csv
+  fen_col: fen
+  target_col: stockfish_cp
+  group_col: game_id
+
+split:
+  train_ratio: 0.80
+  val_ratio: 0.10
+  test_ratio: 0.10
+  random_state: 42
+
+preprocessing:
+  input_size: 769
+  cp_clip: 2000.0
+  tanh_scale: 400.0
+  drop_extreme_rows: false
+  extreme_cp_threshold: 10000
+  use_scaler: true
+
+training:
+  cv_splits: 3
+  n_jobs: 1
+  verbose: 1
+
+models:
+  ridge:
+    alphas: [0.01, 0.1, 1.0, 10.0, 100.0]
+
+  lasso:
+    alphas: [0.0001, 0.001, 0.01, 0.1]
+    max_iter: 10000
+    tol: 0.0001
+
+outputs:
+  save_models: true
+  save_predictions: true
+  save_encoded_arrays: true
+  export_linear_weights: true
+
+
+# Run it with:
+# python scripts/run_linear_models.py --config configs/linear.yaml
+

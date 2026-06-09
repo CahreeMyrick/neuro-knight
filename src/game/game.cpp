@@ -23,6 +23,11 @@ void Game::run() {
             std::string line;
             std::cout << "Enter move: ";
             std::getline(std::cin, line);
+            
+            // quit
+            if (line == "quit") {
+                runnnig = false;
+            }
 
             // parse move
             auto parsed = Parse::two_squares(line);
