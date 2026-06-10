@@ -1,0 +1,51 @@
+# configs/neural_sparse_769.yaml
+
+experiment:
+  name: nn_sparse_769
+  type: neural
+
+outputs_dir: path/to/outputs
+
+dataset:
+  paths:
+    - path/to/data
+    - path/to/more/data
+  fen_col: fen
+  target_col: stockfish_cp
+  group_col: game_id
+
+split:
+  train_ratio: 0.80
+  val_ratio: 0.10
+  test_ratio: 0.10
+  random_state: 42
+
+preprocessing:
+  input_size: 769
+  cp_clip: 2000.0
+  tanh_scale: 400.0
+  drop_extreme_rows: false
+  extreme_cp_threshold: 10000
+
+model:
+  input_size: 769
+  hidden_size: 32
+
+training:
+  batch_size: 2048
+  epochs: 50
+  lr: 0.001
+  weight_decay: 0.00001
+
+  early_stopping_patience: 6
+  min_delta: 0.00001
+
+  device: auto
+
+outputs:
+  save_model: true
+  save_history: true
+  save_encoded_arrays: true
+
+  export_weights_txt: true
+  export_weights_header: true
