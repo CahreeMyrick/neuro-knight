@@ -10,3 +10,4 @@ openings
 .vscode
 *.DS_Store
 figures
+*.yaml
