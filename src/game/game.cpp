@@ -26,7 +26,7 @@ void Game::run() {
             
             // quit
             if (line == "quit") {
-                runnnig = false;
+                running = false;
             }
 
             // parse move
