@@ -1,0 +1,20 @@
+# Local Web application
+flask
+uvicorn
+
+# Chess
+python-chess
+
+# Data processing
+numpy
+pandas
+
+# Machine learning
+scikit-learn
+torch
+
+# Visualization
+matplotlib
+
+# Configuration
+pyyaml
