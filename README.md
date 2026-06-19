@@ -41,8 +41,6 @@ This creates the engine executables inside the `build/` directory.
 
 ## Running the Web Application
 
-The application consists of a backend API and a frontend client.
-
 ### Start the Backend
 
 ```bash
