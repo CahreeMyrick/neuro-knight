@@ -1,13 +1,31 @@
-outputs
-data
-apps
-notebooks
-build
-model_outputs
-model_exports
-scratch
-openings
-.vscode
-*.DS_Store
-figures
-*.yaml
+# Generated data
+outputs/
+data/
+build/
+scratch/
+model_outputs/
+model_exports/
+figures/
+
+# Notebooks
+notebooks/
+
+# Openings database
+openings/
+
+# IDE
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Local configs
+linear.yaml
+neural.yaml
+
+# Web build artifacts
+apps/web-client/public/
