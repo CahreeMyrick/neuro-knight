@@ -11,7 +11,7 @@ figures/
 notebooks/
 
 # Openings database
-openings/
+# openings/
 
 # IDE
 .vscode/
@@ -28,4 +28,4 @@ linear.yaml
 neural.yaml
 
 # Web build artifacts
-apps/web-client/public/
+#apps/web-client/public/
