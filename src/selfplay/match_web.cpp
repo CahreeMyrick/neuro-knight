@@ -59,7 +59,7 @@ static SearchResult choose_web_move(
 
 static BitboardPosition starting_position_from_book() {
     const std::string book_path =
-        "/Users/cahree/dev/systems/chess/engines/engine_4/src/openings/popularpos_lichess_v3.epd";
+        "../openings/popularpos_lichess_v3.epd";
 
     // Suppress opening book logs so stdout remains pure JSON.
     std::ostringstream suppressed_output;
