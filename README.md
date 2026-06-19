@@ -110,3 +110,17 @@ Uses a traditional hand-crafted material evaluation function.
 
 Uses a learned neural-network evaluation function trained on chess positions.
 
+---
+
+## Demo
+
+https://github.com/user-attachments/assets/1c66593d-a097-4b76-95e2-1ef066a461ad
+
+
+
+
+
+
+
+
+
