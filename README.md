@@ -100,24 +100,6 @@ Click **Start Game** to begin a match and load the completed game.
 
 ---
 
-## Project Structure
-
-```text
-neuro-knight/
-├── apps/
-│   ├── match_api/
-│   └── web-client/
-├── src/
-├── scripts/
-├── tests/
-├── build/
-├── CMakeLists.txt
-├── requirements.txt
-└── README.md
-```
-
----
-
 ## Engine Types
 
 ### Material Engine
